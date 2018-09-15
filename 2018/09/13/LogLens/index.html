@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Tinkle1129">
 <meta property="og:description" content="LogLens: A Real-time Log Analysis Systemsource: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;amp;arnumber=8416368  摘要  大多数面向用户系统的管理者依赖于周期性的日志数据来获取生产应用中的健康和状态。日志记录着对复杂问题根因分析至关重要的信息。在这篇文章中，我们提出一个名叫Lo">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-13T08:00:03.581Z">
+<meta property="og:updated_time" content="2018-09-14T08:32:41.662Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LogLens">
 <meta name="twitter:description" content="LogLens: A Real-time Log Analysis Systemsource: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;amp;arnumber=8416368  摘要  大多数面向用户系统的管理者依赖于周期性的日志数据来获取生产应用中的健康和状态。日志记录着对复杂问题根因分析至关重要的信息。在这篇文章中，我们提出一个名叫Lo">
@@ -32,7 +32,7 @@
     #container.show {
       background: linear-gradient(200deg,#a0cfe4,#e8c37e);
     }
-  </style>
+  </style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
   
@@ -40,7 +40,7 @@
 </head>
 
 <body>
-  <div id="container" q-class="show:isCtnShow">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
@@ -61,6 +61,14 @@
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/tags/LogAnalysis/">日志分析</a></li>
+	        
+				<li><a href="/tags/MachineLearning/">机器学习</a></li>
+	        
+				<li><a href="/tags/Cpp/">C++学习</a></li>
+	        
+				<li><a href="/tags/Leetcode/">算法练习</a></li>
+	        
+				<li><a href="/tags/SelfStudy/">读书笔记</a></li>
 	        
 			</ul>
 		</nav>
@@ -116,6 +124,14 @@
 			
 				
 			
+				
+			
+				
+			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -131,12 +147,20 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 16.666666666666668%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/LogAnalysis/">日志分析</a></li>
+					<li style="width: 16.666666666666668%"><a href="/tags/LogAnalysis/">日志分析</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/tags/MachineLearning/">机器学习</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/tags/Cpp/">C++学习</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/tags/Leetcode/">算法练习</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/tags/SelfStudy/">读书笔记</a></li>
 		        
 				</ul>
 			</nav>
@@ -176,6 +200,12 @@
 <li>摘要</li>
 </ul>
 <p>大多数面向用户系统的管理者依赖于周期性的日志数据来获取生产应用中的健康和状态。日志记录着对复杂问题根因分析至关重要的信息。在这篇文章中，我们提出一个名叫LogLens的实时日志分析系统，它能够不采用（或者采用最少的）目标系统知识和用户规范从日志中检测出异常的过程。在LogLens中，我们采取基于在应用日志中发现模式的无监督机器学习技术，然后利用这些模式和实时日志解析设计先进的日志分析应用程序。想较于现有日志分析系统主要局限于日志索引和搜索能力，LogLens提供了一个支持无状态和有状态日志分析应用。（Currently后略）</p>
+<ul>
+<li>介绍</li>
+</ul>
+<p>日志分析是一个将原始日志——记录软件系统事件信息——转换成能够帮助操作者和管理者解决问题的消息的一个过程。日志分析技术被广泛用于许多领域，例如检测安全威胁、符合性审计、电厂故障检测或者数据中心操作。快速准确地分析日志的能力是至关重要的，能够在系统故障发生之前或者发生时刻减少系统停机时间并检测运行问题。</p>
+<p>能够进行快速和准确分析日志的重要一个方面是它的结构。识别日志的结构能够容易地提取里面的信息，例如类型、产生事件、特殊事件源、关键性能指标的值等等。若未知日志结构，日志分析变成一个简单的基于关键字查询的工具。事实上，现在大多数的商业化日志分析工具允许用户直接指定日志模式或者基于领域知识建立模型。尽管监督日志分析可以提取不带歧义的重要信息，它仍然存在多方面的缺陷：a) 特定于用户所寻求和关注的错误内容。b)它不容易适应新的数据源和格式。随着更多的新设备和数据格式进入市场， 有监督的日志分析工具难以跟踪适应新的日志结构并识别未知异常。</p>
+<p>不是将日志结构作为输入，LogLens能够从正确的日志中自动学习日志结构并且构建能够捕捉正常系统行为的模型。随后它将该模型应用于实时生产日志进而检测异常。我们这里定义的异常是不匹配现有系统正常行为模型的一条或者一组日志。LogLens不需要（或最少）用户参与和适应自动生成新的日志格式和模式，只要用户可以提供一组用于构建模型的日志异常检测。</p>
 
       
 
@@ -279,6 +309,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/09/14/LogMine/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          LogMine
+        
+      </div>
+    </a>
   
   
     <a href="/2018/09/11/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
@@ -564,6 +603,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     </div>
 
 </div>
-  </div>
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>

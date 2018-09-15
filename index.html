@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
@@ -27,7 +27,7 @@
     #container.show {
       background: linear-gradient(200deg,#a0cfe4,#e8c37e);
     }
-  </style>
+  </style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
   
@@ -35,7 +35,7 @@
 </head>
 
 <body>
-  <div id="container" q-class="show:isCtnShow">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
@@ -56,6 +56,14 @@
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/tags/LogAnalysis/">日志分析</a></li>
+	        
+				<li><a href="/tags/MachineLearning/">机器学习</a></li>
+	        
+				<li><a href="/tags/Cpp/">C++学习</a></li>
+	        
+				<li><a href="/tags/Leetcode/">算法练习</a></li>
+	        
+				<li><a href="/tags/SelfStudy/">读书笔记</a></li>
 	        
 			</ul>
 		</nav>
@@ -111,6 +119,14 @@
 			
 				
 			
+				
+			
+				
+			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -126,12 +142,20 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 16.666666666666668%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/LogAnalysis/">日志分析</a></li>
+					<li style="width: 16.666666666666668%"><a href="/tags/LogAnalysis/">日志分析</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/tags/MachineLearning/">机器学习</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/tags/Cpp/">C++学习</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/tags/Leetcode/">算法练习</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/tags/SelfStudy/">读书笔记</a></li>
 		        
 				</ul>
 			</nav>
@@ -147,6 +171,116 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-LogMine" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/14/LogMine/">LogMine</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/14/LogMine/" class="archive-article-date">
+  	<time datetime="2018-09-14T08:33:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h1><p> <img src="/2018/09/14/LogMine/figure1.png" alt="figure1"></p>
+<p>LogMine将消息日志划分成相关的组，并且用最具有代表性的日志模式来代表每个类。再自底向上进行聚合直到达到root节点。在每个模型中，有三个类型的域：<strong>Fixed value, Variable and Wildcard</strong>。其中Fixed value field匹配诸如<em>www, httpd, INFO</em>这种独一无二的值。而Variable Field匹配一个确定类型但是具有任意值如<em>number, IP address, date</em>。而Wildcards匹配任意类型的任意值。</p>
+<p> <img src="/2018/09/14/LogMine/figure2.png" alt="figure2"></p>
+<p>LogMiner将一批日志数据作为输入，通过聚类模块用限制性条件将它们聚类起来，在模式识别模块中生成每个类的模式，这些模型构成了层次模式中的叶子结点。这些模式接着用松弛条件继续聚合生成更泛化的模式，这些模式是之前模式的父节点。如此往复，直到生成根节点。</p>
+<p>(1) Tokenization and Type Detection</p>
+<p> <img src="/2018/09/14/LogMine/figure3.png" alt="figure3"></p>
+<p>主要工作是用分隔符把一条日志切分开来，同时检测并替换预定义的类型（如IP，日期等等）。</p>
+<p>(2) Fast and Memory Efficient Clustering</p>
+<ul>
+<li><p>Distance Function</p>
+<p><img src="/2018/09/14/LogMine/DistPQ.png" alt="DistPQ"></p>
+</li>
+</ul>
+<p>首先定义了两条日志P和Q之间的距离函数，k1是一个可调节参数，默认为1。</p>
+<p> <img src="/2018/09/14/LogMine/score.png" alt="score"></p>
+<p>将score进行一番修改，可以定义两个cluster patterns之间的距离函数。默认k1=k2=1，</p>
+<ul>
+<li>Finding Clusters</li>
+</ul>
+<p>定义了内部参数<em>MaxDist</em>，该参数限制了一个类内日志和类代表日志之间的距离的最大距离，则同一个类内任意两条日志之间的距离不超过<em>2MaxDist</em>。每个类都有一个代表性的日志消息，即属于该类的第一个成员。对于任意一条新的日志消息，当且仅当与类代表日志之间的距离小于<em>MaxDist</em>才进行插入操作，否则新建一个类，并将该日志作为类的代表日志。</p>
+<p>因为每个类只需要保留代表日志，所以节省了内存空间。仅需<em>O(number of clusters)</em>的memory usage。</p>
+<ul>
+<li>Early Abandoning Techique</li>
+</ul>
+<p>采用Early abandoning 来加速Euclidean distance的相似度搜索。粗暴点的说法就是field by field时候，如果距离超过了<em>MaxDist</em>，那么就提前中止两个log的比较。</p>
+<p>（3）Log Pattern Recognition</p>
+<p> <img src="/2018/09/14/LogMine/figure4.png" alt="figure4"></p>
+<p>对每个group生成对应的pattern，因为group里日志长度不尽相同，所以需要对日志进行最佳对齐。最佳对齐是指用在融合时候用最少的variable和wildcard。Align算法采用了<em>Smith-Waterman</em>，操作步数为<em>O(l1l2)</em>,l1,l2是两条日志的长度。</p>
+<p> <img src="/2018/09/14/LogMine/algorithm2.png" alt="algorithm2"></p>
+<p>作者认为每个group里的log都是近似相同，所以日志的输入顺序不太有影响。</p>
+<p>（4）Hierarchy of Patterns</p>
+<p>模式的层次结构可以提供日志消息的整体视图，并且管理员可以在层次结构中选择具有正确特性的级别来监视异常。构建层次的过程是一个bottom-up的过程。为了建立不同层次水平的log pattern，通过调节alpha乘积来调节<em>MaxDist</em>，在每一次迭代过程中，都是增加了一层的pattern。</p>
+<p>在Hybrid Pattern Recognition中，因为放宽了<em>MaxDist</em>的限制，group里的log都不尽相同，所以前面的Sequential pattern recognition算法不适用。但因为非叶子结点层中的group里的pattern个数有限，可以采用selective merge order中的非加权组平均法UPGMA算法。</p>
+<p>th1定义为一个类中pattern的密度阈值，th2定义为一个类中pattern的个数。</p>
+<p>  <img src="/2018/09/14/LogMine/algorithm3.png" alt="algorithm3"></p>
+<p>作者这里定义了一个cost函数， <img src="/2018/09/14/LogMine/cost.png" alt="cost"></p>
+<p><em>Size_i</em>是类<em>i</em>中日志的个数，<em>WC_i</em>代表wildcards的个数，<em>Var_i</em>是variable fields的个数，<em>FV_i</em>是fixed value fields的个数，<em>a_1,a_2,a_3</em>是相应的参数。pattern的选取为相同层的pattern。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">LogAnalysis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/14/LogMine/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-LogLens" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -173,6 +307,12 @@
 <li>摘要</li>
 </ul>
 <p>大多数面向用户系统的管理者依赖于周期性的日志数据来获取生产应用中的健康和状态。日志记录着对复杂问题根因分析至关重要的信息。在这篇文章中，我们提出一个名叫LogLens的实时日志分析系统，它能够不采用（或者采用最少的）目标系统知识和用户规范从日志中检测出异常的过程。在LogLens中，我们采取基于在应用日志中发现模式的无监督机器学习技术，然后利用这些模式和实时日志解析设计先进的日志分析应用程序。想较于现有日志分析系统主要局限于日志索引和搜索能力，LogLens提供了一个支持无状态和有状态日志分析应用。（Currently后略）</p>
+<ul>
+<li>介绍</li>
+</ul>
+<p>日志分析是一个将原始日志——记录软件系统事件信息——转换成能够帮助操作者和管理者解决问题的消息的一个过程。日志分析技术被广泛用于许多领域，例如检测安全威胁、符合性审计、电厂故障检测或者数据中心操作。快速准确地分析日志的能力是至关重要的，能够在系统故障发生之前或者发生时刻减少系统停机时间并检测运行问题。</p>
+<p>能够进行快速和准确分析日志的重要一个方面是它的结构。识别日志的结构能够容易地提取里面的信息，例如类型、产生事件、特殊事件源、关键性能指标的值等等。若未知日志结构，日志分析变成一个简单的基于关键字查询的工具。事实上，现在大多数的商业化日志分析工具允许用户直接指定日志模式或者基于领域知识建立模型。尽管监督日志分析可以提取不带歧义的重要信息，它仍然存在多方面的缺陷：a) 特定于用户所寻求和关注的错误内容。b)它不容易适应新的数据源和格式。随着更多的新设备和数据格式进入市场， 有监督的日志分析工具难以跟踪适应新的日志结构并识别未知异常。</p>
+<p>不是将日志结构作为输入，LogLens能够从正确的日志中自动学习日志结构并且构建能够捕捉正常系统行为的模型。随后它将该模型应用于实时生产日志进而检测异常。我们这里定义的异常是不匹配现有系统正常行为模型的一条或者一组日志。LogLens不需要（或最少）用户参与和适应自动生成新的日志格式和模式，只要用户可以提供一组用于构建模型的日志异常检测。</p>
 
       
 
@@ -546,6 +686,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     </div>
 
 </div>
-  </div>
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>

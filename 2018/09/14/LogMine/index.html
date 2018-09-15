@@ -6,19 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hello World | Tinkle1129</title>
+  <title>LogMine | Tinkle1129</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="算法流程  LogMine将消息日志划分成相关的组，并且用最具有代表性的日志模式来代表每个类。再自底向上进行聚合直到达到root节点。在每个模型中，有三个类型的域：Fixed value, Variable and Wildcard。其中Fixed value field匹配诸如www, httpd, INFO这种独一无二的值。而Variable Field匹配一个确定类型但是具有任意值如numb">
+<meta name="keywords" content="LogAnalysis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2018/09/11/hello-world/index.html">
+<meta property="og:title" content="LogMine">
+<meta property="og:url" content="http://yoursite.com/2018/09/14/LogMine/index.html">
 <meta property="og:site_name" content="Tinkle1129">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="算法流程  LogMine将消息日志划分成相关的组，并且用最具有代表性的日志模式来代表每个类。再自底向上进行聚合直到达到root节点。在每个模型中，有三个类型的域：Fixed value, Variable and Wildcard。其中Fixed value field匹配诸如www, httpd, INFO这种独一无二的值。而Variable Field匹配一个确定类型但是具有任意值如numb">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-11T07:14:20.597Z">
+<meta property="og:image" content="http://yoursite.com/2018/09/14/LogMine/figure1.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/14/LogMine/figure2.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/14/LogMine/figure3.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/14/LogMine/DistPQ.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/14/LogMine/score.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/14/LogMine/figure4.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/14/LogMine/algorithm2.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/14/LogMine/algorithm3.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/14/LogMine/cost.png">
+<meta property="og:updated_time" content="2018-09-15T07:45:34.199Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="LogMine">
+<meta name="twitter:description" content="算法流程  LogMine将消息日志划分成相关的组，并且用最具有代表性的日志模式来代表每个类。再自底向上进行聚合直到达到root节点。在每个模型中，有三个类型的域：Fixed value, Variable and Wildcard。其中Fixed value field匹配诸如www, httpd, INFO这种独一无二的值。而Variable Field匹配一个确定类型但是具有任意值如numb">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/14/LogMine/figure1.png">
   
     <link rel="alternative" href="/atom.xml" title="Tinkle1129" type="application/atom+xml">
   
@@ -174,35 +185,63 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-LogMine" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      LogMine
     </h1>
   
 
         
-        <a href="/2018/09/11/hello-world/" class="archive-article-date">
-  	<time datetime="2018-09-11T07:14:20.596Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-11</time>
+        <a href="/2018/09/14/LogMine/" class="archive-article-date">
+  	<time datetime="2018-09-14T08:33:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h1 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h1><p> <img src="/2018/09/14/LogMine/figure1.png" alt="figure1"></p>
+<p>LogMine将消息日志划分成相关的组，并且用最具有代表性的日志模式来代表每个类。再自底向上进行聚合直到达到root节点。在每个模型中，有三个类型的域：<strong>Fixed value, Variable and Wildcard</strong>。其中Fixed value field匹配诸如<em>www, httpd, INFO</em>这种独一无二的值。而Variable Field匹配一个确定类型但是具有任意值如<em>number, IP address, date</em>。而Wildcards匹配任意类型的任意值。</p>
+<p> <img src="/2018/09/14/LogMine/figure2.png" alt="figure2"></p>
+<p>LogMiner将一批日志数据作为输入，通过聚类模块用限制性条件将它们聚类起来，在模式识别模块中生成每个类的模式，这些模型构成了层次模式中的叶子结点。这些模式接着用松弛条件继续聚合生成更泛化的模式，这些模式是之前模式的父节点。如此往复，直到生成根节点。</p>
+<p>(1) Tokenization and Type Detection</p>
+<p> <img src="/2018/09/14/LogMine/figure3.png" alt="figure3"></p>
+<p>主要工作是用分隔符把一条日志切分开来，同时检测并替换预定义的类型（如IP，日期等等）。</p>
+<p>(2) Fast and Memory Efficient Clustering</p>
+<ul>
+<li><p>Distance Function</p>
+<p><img src="/2018/09/14/LogMine/DistPQ.png" alt="DistPQ"></p>
+</li>
+</ul>
+<p>首先定义了两条日志P和Q之间的距离函数，k1是一个可调节参数，默认为1。</p>
+<p> <img src="/2018/09/14/LogMine/score.png" alt="score"></p>
+<p>将score进行一番修改，可以定义两个cluster patterns之间的距离函数。默认k1=k2=1，</p>
+<ul>
+<li>Finding Clusters</li>
+</ul>
+<p>定义了内部参数<em>MaxDist</em>，该参数限制了一个类内日志和类代表日志之间的距离的最大距离，则同一个类内任意两条日志之间的距离不超过<em>2MaxDist</em>。每个类都有一个代表性的日志消息，即属于该类的第一个成员。对于任意一条新的日志消息，当且仅当与类代表日志之间的距离小于<em>MaxDist</em>才进行插入操作，否则新建一个类，并将该日志作为类的代表日志。</p>
+<p>因为每个类只需要保留代表日志，所以节省了内存空间。仅需<em>O(number of clusters)</em>的memory usage。</p>
+<ul>
+<li>Early Abandoning Techique</li>
+</ul>
+<p>采用Early abandoning 来加速Euclidean distance的相似度搜索。粗暴点的说法就是field by field时候，如果距离超过了<em>MaxDist</em>，那么就提前中止两个log的比较。</p>
+<p>（3）Log Pattern Recognition</p>
+<p> <img src="/2018/09/14/LogMine/figure4.png" alt="figure4"></p>
+<p>对每个group生成对应的pattern，因为group里日志长度不尽相同，所以需要对日志进行最佳对齐。最佳对齐是指用在融合时候用最少的variable和wildcard。Align算法采用了<em>Smith-Waterman</em>，操作步数为<em>O(l1l2)</em>,l1,l2是两条日志的长度。</p>
+<p> <img src="/2018/09/14/LogMine/algorithm2.png" alt="algorithm2"></p>
+<p>作者认为每个group里的log都是近似相同，所以日志的输入顺序不太有影响。</p>
+<p>（4）Hierarchy of Patterns</p>
+<p>模式的层次结构可以提供日志消息的整体视图，并且管理员可以在层次结构中选择具有正确特性的级别来监视异常。构建层次的过程是一个bottom-up的过程。为了建立不同层次水平的log pattern，通过调节alpha乘积来调节<em>MaxDist</em>，在每一次迭代过程中，都是增加了一层的pattern。</p>
+<p>在Hybrid Pattern Recognition中，因为放宽了<em>MaxDist</em>的限制，group里的log都不尽相同，所以前面的Sequential pattern recognition算法不适用。但因为非叶子结点层中的group里的pattern个数有限，可以采用selective merge order中的非加权组平均法UPGMA算法。</p>
+<p>th1定义为一个类中pattern的密度阈值，th2定义为一个类中pattern的个数。</p>
+<p>  <img src="/2018/09/14/LogMine/algorithm3.png" alt="algorithm3"></p>
+<p>作者这里定义了一个cost函数， <img src="/2018/09/14/LogMine/cost.png" alt="cost"></p>
+<p><em>Size_i</em>是类<em>i</em>中日志的个数，<em>WC_i</em>代表wildcards的个数，<em>Var_i</em>是variable fields的个数，<em>FV_i</em>是fixed value fields的个数，<em>a_1,a_2,a_3</em>是相应的参数。pattern的选取为相同层的pattern。</p>
 
       
 
@@ -232,6 +271,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">LogAnalysis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -282,7 +332,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/09/11/hello-world/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/09/14/LogMine/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -296,15 +346,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/09/13/LogLens/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          LogLens
-        
-      </div>
-    </a>
   
+    <a href="/2018/09/13/LogLens/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LogLens</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
