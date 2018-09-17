@@ -6,15 +6,32 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: LogAnalysis | Tinkle1129</title>
+  <title>Drain | Tinkle1129</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Tinkle1129">
-<meta property="og:url" content="http://yoursite.com/tags/LogAnalysis/index.html">
+  <meta name="description" content="source: https://arxiv.org/pdf/1806.04356.pdf   日志解析就是将原始日志转化成结构化日志，并从中抽象出日志事件的过程。 AlgorithmDrain是基于有向无环图(DAG)的日志解析方法，分别通过以下五个Layer：预处理层（Preprocessing Layer）、长度层（Length Layer）、记号层（Token Layer）、相似层（Simi">
+<meta name="keywords" content="LogAnalysis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Drain">
+<meta property="og:url" content="http://yoursite.com/2018/09/17/Drain/index.html">
 <meta property="og:site_name" content="Tinkle1129">
+<meta property="og:description" content="source: https://arxiv.org/pdf/1806.04356.pdf   日志解析就是将原始日志转化成结构化日志，并从中抽象出日志事件的过程。 AlgorithmDrain是基于有向无环图(DAG)的日志解析方法，分别通过以下五个Layer：预处理层（Preprocessing Layer）、长度层（Length Layer）、记号层（Token Layer）、相似层（Simi">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2018/09/17/Drain/figure1.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/17/Drain/figure2.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/17/Drain/simSeq.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/17/Drain/equ.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/17/Drain/figure3.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/17/Drain/figure4.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/17/Drain/figure5.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/17/Drain/stinit.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/17/Drain/st.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/17/Drain/base.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/17/Drain/lcs.png">
+<meta property="og:updated_time" content="2018-09-17T14:18:20.607Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tinkle1129">
+<meta name="twitter:title" content="Drain">
+<meta name="twitter:description" content="source: https://arxiv.org/pdf/1806.04356.pdf   日志解析就是将原始日志转化成结构化日志，并从中抽象出日志事件的过程。 AlgorithmDrain是基于有向无环图(DAG)的日志解析方法，分别通过以下五个Layer：预处理层（Preprocessing Layer）、长度层（Length Layer）、记号层（Token Layer）、相似层（Simi">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/17/Drain/figure1.png">
   
     <link rel="alternative" href="/atom.xml" title="Tinkle1129" type="application/atom+xml">
   
@@ -170,36 +187,107 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Drain" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Drain
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/17/Drain/" class="archive-article-date">
+
+        
+        <a href="/2018/09/17/Drain/" class="archive-article-date">
   	<time datetime="2018-09-17T13:26:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-17</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/17/Drain/">Drain</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>source: <a href="https://arxiv.org/pdf/1806.04356.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1806.04356.pdf</a></p>
+<p> <img src="/2018/09/17/Drain/figure1.png" alt="figure1"></p>
+<p>日志解析就是将原始日志转化成结构化日志，并从中抽象出日志事件的过程。</p>
+<h1 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h1><p>Drain是基于有向无环图(DAG)的日志解析方法，分别通过以下五个Layer：预处理层（Preprocessing Layer）、长度层（Length Layer）、记号层（Token Layer）、相似层（Similarity Layer）和输出层（Output Layer）。</p>
+<p> <img src="/2018/09/17/Drain/figure2.png" alt="figure2"></p>
+<h2 id="Preprocessing-Layer"><a href="#Preprocessing-Layer" class="headerlink" title="Preprocessing Layer"></a>Preprocessing Layer</h2><p>将通用的Domain Knowledge如<em>IP address</em>,<em>filepath</em>整合起来，先对原始日志进行预处理。</p>
+<p>这里处理的方式和之前的算法不同之处在于，用<em>block_**替代</em>block_123<em>而非将</em>block_123*删除</p>
+<p>原始日志 </p>
+<blockquote>
+<p> Received block blk_3587 of size 6710864 from /10.251.42.84</p>
+</blockquote>
+<p>其他解析方法预处理（blk_*, /filpath都被去掉）</p>
+<blockquote>
+<p> Received block of size 6710864 from</p>
+</blockquote>
+<p>Drain</p>
+<blockquote>
+<p> Received block blkID of size 6710864 from Filepath</p>
+</blockquote>
+<h2 id="Length-Layer"><a href="#Length-Layer" class="headerlink" title="Length Layer"></a>Length Layer</h2><p>基于相同事件的日志长度相同的假设，将日志根据长度分桶</p>
+<h2 id="Token-Layer"><a href="#Token-Layer" class="headerlink" title="Token Layer"></a>Token Layer</h2><p>这里定义了<em>split token</em>，日志根据<em>split token</em>进一步分桶</p>
+<p>Drain考虑了三种情况</p>
+<p>（1）第一个token是split token</p>
+<p>（2）最后一个token是split token</p>
+<p>（3）第一个和最后一个都不是split token</p>
+<p>如果log的第一个token和最后一个token都包含了数字或者特殊符号，那么就属于第三种情况。</p>
+<h2 id="Similarity-Layer"><a href="#Similarity-Layer" class="headerlink" title="Similarity Layer"></a>Similarity Layer</h2><p>按照<em>split token</em>进行划分之后，将日志与桶内存在的日志组所对应的事件签名log event signature进行相似度比较</p>
+<p> <img src="/2018/09/17/Drain/simSeq.png" alt="simSeq"></p>
+<p>seq1代表该条log，seq2代表log event signature，n为日志长度，nc为seq2中非wildcards的数目</p>
+<p> <img src="/2018/09/17/Drain/equ.png" alt="equ"></p>
+<p>如果<em>simSeq</em>大于similarity threshold <em>st</em>，那么log属于该日志组，同时更新log event signature</p>
+<p>如果找不到满足上述条件，那么新建一个日志组，把该log添加进去。</p>
+<h2 id="Output-Layer"><a href="#Output-Layer" class="headerlink" title="Output Layer"></a>Output Layer</h2><p>针对相同事件可能存在不同长度的问题，提供了一个optional的融合方法来解决。</p>
+<p>  <img src="/2018/09/17/Drain/figure3.png" alt="figure3"></p>
+<p>最终合并成</p>
+<blockquote>
+<p> Send * file</p>
+</blockquote>
+<h2 id="Cache-Mechanism-缓存机制"><a href="#Cache-Mechanism-缓存机制" class="headerlink" title="Cache Mechanism 缓存机制"></a>Cache Mechanism 缓存机制</h2><p> <img src="/2018/09/17/Drain/figure4.png" alt="figure4"></p>
+<p>超算生成的日志通常会连续地生成相同格式的日志，因此Drain定义了一个Cache Pointer，定位上一次Template的位置。该方法可以减少查找次数。</p>
+<h1 id="DAG更新"><a href="#DAG更新" class="headerlink" title="DAG更新"></a>DAG更新</h1><h2 id="Update-the-DAG"><a href="#Update-the-DAG" class="headerlink" title="Update the DAG"></a>Update the DAG</h2><p> <img src="/2018/09/17/Drain/figure5.png" alt="figure5"></p>
+<h2 id="Similarity-Threshold-Initialization-and-Updating"><a href="#Similarity-Threshold-Initialization-and-Updating" class="headerlink" title="Similarity Threshold Initialization and Updating"></a>Similarity Threshold Initialization and Updating</h2><h2 id="Initialization"><a href="#Initialization" class="headerlink" title="Initialization"></a>Initialization</h2><p>不同的log group有着不同的<em>st_init</em></p>
+<p> <img src="/2018/09/17/Drain/stinit.png" alt="stinit"></p>
+<p><em>seqLen</em>代表日志事件长度，<em>digLen</em>代表具有数字的消息长度。<em>st_init</em>表征了日志事件中<em>const ratio</em>的下界</p>
+<h2 id="Updating"><a href="#Updating" class="headerlink" title="Updating"></a>Updating</h2><p>st不是一尘不变的</p>
+<p> <img src="/2018/09/17/Drain/st.png" alt="st"></p>
+<p><em>n</em>代表每次log event signature变化时从const token变成wildcard的个数。</p>
+<p> <img src="/2018/09/17/Drain/base.png" alt="base"></p>
+<h2 id="Merge-Log-Groups"><a href="#Merge-Log-Groups" class="headerlink" title="Merge Log Groups"></a>Merge Log Groups</h2><p> 合并不等长log event signature</p>
+<p><img src="/2018/09/17/Drain/lcs.png" alt="lcs"></p>
+<p><em>lenLCS</em>表示LCS中token的个数，<em>lenNew</em>和<em>lenExist</em>分别表示新的log event和当前log event的token个数。</p>
+<p>这里会定义一个merge threshold融合阈值<em>mt</em>，当<em>temSim&gt;mt</em>时才会进行融合操作。</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -211,95 +299,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/09/17/Drain/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/14/LogMine/" class="archive-article-date">
-  	<time datetime="2018-09-14T08:33:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-14</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/17/chapter2-变量和基本类型/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">chapter2 变量和基本类型</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/14/LogMine/">LogMine</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">LogAnalysis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/13/LogLens/" class="archive-article-date">
-  	<time datetime="2018-09-13T07:36:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/13/LogLens/">LogLens</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">LogAnalysis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -322,9 +421,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
